@@ -71,10 +71,7 @@ class Profile extends Component {
                         axios.get(`http://localhost:4000/users/${this.props.currentUser._id}`)
                             .then(res => {
                                 setUserToLocalStorage(res.data)
-                                this.setState({ currentUser: res.data });
-                                this.setState({
-                                    isToggleOn: "Follow"
-                                });
+                                this.setState({ currentUser: res.data, isToggleOn: "Follow" });
                             })
                             .catch(err => {
                                 this.props.history.replace("/error");
@@ -91,10 +88,7 @@ class Profile extends Component {
                         axios.get(`http://localhost:4000/users/${this.props.currentUser._id}`)
                             .then(res => {
                                 setUserToLocalStorage(res.data);
-                                this.setState({ currentUser: res.data });
-                                this.setState({
-                                    isToggleOn: "Unfollow"
-                                });
+                                this.setState({ currentUser: res.data, isToggleOn: "Unfollow" });
                             })
                             .catch(err => {
                                 this.props.history.replace("/error");

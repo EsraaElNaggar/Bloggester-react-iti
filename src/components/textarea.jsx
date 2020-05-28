@@ -5,6 +5,7 @@ const Textarea = props => {
     return (
         <React.Fragment>
             <textarea
+                wrap="soft"
                 id={name}
                 name={name}
                 cols={30}

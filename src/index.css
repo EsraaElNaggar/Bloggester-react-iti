@@ -7,6 +7,10 @@ body {
     font-family: "Roboto", sans-serif !important ;
 }
 
+button{
+    outline: none !important;
+}
+
 .navColournShadow {
     background-color: #0c1821;
     box-shadow: 5px 1px 5px rgba(2, 128, 144, 0.2);
@@ -90,7 +94,7 @@ body {
     transform: scale(0.6);
 }
 #cover form{
-    height: 20px;
+    height: 50px;
 }
 .searchInput[type="text"]{
     font-size: 24px;
@@ -262,6 +266,7 @@ body {
     font-size: 0.95rem;
     line-height: 1.3em;
     color: #4B4B4B;
+    word-break: break-word;
 }
 .bcH5 {
     position: absolute;
@@ -276,9 +281,9 @@ body {
     position: absolute;
     left: 30px;
     bottom: -55px;
-    font-size: 2rem;
-    font-weight: 800;
-    color: #C3C3C3;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: #0c1821;
     margin-bottom: 5rem;
 }
 .bcfab {
@@ -931,6 +936,9 @@ body {
 .textPost {
     height: 70px;
     margin: 0;
+    word-break: break-word;
+    white-space: pre-wrap;
+    color: white;
 }
 .buttonPost {
     display: block;
@@ -1175,6 +1183,8 @@ body {
    color: white !important;
     font-size: 1.2rem;
     line-height: 1.5;
+    /* word-break: break-all; */
+    white-space: pre-wrap;
 }
 .blogOper{
     display: flex;
@@ -1186,7 +1196,7 @@ body {
     margin: 0 25%;
     font-size: 130%;
     color:white;
-        background: none;
+    background: none;
     border: none;
 
 }

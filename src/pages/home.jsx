@@ -70,6 +70,7 @@ class Home extends Component {
                                 blogImg={blog.blogImg}
                                 blogTitle={blog.blogTitle}
                                 blogBody={blog.blogBody}
+                                currentDate={blog.currentDate}
                                 // publishDay={blog.publishDay}
                                 // publishMonth={blog.publishMonth}
                                 users={this.state.users}

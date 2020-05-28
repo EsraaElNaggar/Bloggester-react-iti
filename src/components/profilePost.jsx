@@ -22,7 +22,7 @@ class ProfilePost extends Component {
                                 <h1 className="titlePost">
                                     <Link to={"/blog/" + p.blogId}>{p.blogTitle}</Link>
                                 </h1>
-                                <p className="textPost">{p.blogBody.slice(0, 200)}...
+                                <p className="textPost">{p.blogBody.slice(0, 145)}...
                                 </p>
                                 <Link to={"/blog/" + p.blogId} className="buttonPost">Read more</Link>
                             </div>

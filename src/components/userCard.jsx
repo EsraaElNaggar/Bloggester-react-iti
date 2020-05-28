@@ -37,42 +37,42 @@ class UserCard extends Component {
             case true:
                 axios.post(`http://localhost:4000/users/unfollow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        axios.get(`http://localhost:4000/users/${this.state.currentUser._id}`)
-                            .then(res => {
-                                setUserToLocalStorage(res.data)
-                                this.setState({ currentUser: res.data });
-                                this.setState(e => ({
-                                    isToggleOn: !e.isToggleOn
-                                }));
-                            })
-                            .catch(err => {
-                                this.props.history.replace("/error");
-                            })
+                        // axios.get(`http://localhost:4000/users/${this.state.currentUser._id}`)
+                        //     .then(res => {
+                        this.setState({ currentUser: res.data });
+                        setUserToLocalStorage(res.data)
+                        this.setState(e => ({
+                            isToggleOn: !e.isToggleOn
+                        }));
                     })
                     .catch(err => {
                         this.props.history.replace("/error");
                     })
+                // })
+                //             .catch (err => {
+                //     this.props.history.replace("/error");
+                // })
                 break;
 
             case false:
                 axios.post(`http://localhost:4000/users/follow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        axios.get(`http://localhost:4000/users/${this.props.currentUser._id}`)
-                            .then(res => {
-                                setUserToLocalStorage(res.data);
-                                this.setState({ currentUser: res.data });
-                                this.setState(e => ({
-                                    isToggleOn: !e.isToggleOn
-                                }));
-                            })
-                            .catch(err => {
-                                this.props.history.replace("/error");
-                            })
+                        // axios.get(`http://localhost:4000/users/${this.props.currentUser._id}`)
+                        //     .then(res => {
+                        this.setState({ currentUser: res.data });
+                        setUserToLocalStorage(res.data);
+                        this.setState(e => ({
+                            isToggleOn: !e.isToggleOn
+                        }));
                     })
                     .catch(err => {
                         this.props.history.replace("/error");
                     })
-                break;
+            // })
+            //     .catch(err => {
+            //         this.props.history.replace("/error");
+            //     })
+            // break;
             default:
                 break;
         }

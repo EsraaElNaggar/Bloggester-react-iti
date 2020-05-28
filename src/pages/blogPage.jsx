@@ -50,7 +50,6 @@ class BlogPage extends Component {
         const p = this.state;
         const user = this.state.users;
         const blog = this.state.blog;
-        console.log(blog._id);
 
         return (
             <React.Fragment>
