@@ -24,7 +24,7 @@ class Profile extends Component {
 
         if (this.props.match.params.id === this.props.currentUser._id || _.isEmpty(this.props.match.params)) {
             this.setState({ user: getUserFromLocalStorage() });
-            axios.get(`http://localhost:4000/blogs/user/${getUserIdFromLocalStorage()}`)
+            axios.get(process.env.REACT_APP_BACKEND_URL + `/blogs/user/${getUserIdFromLocalStorage()}`)
                 .then(res => {
                     this.setState({ blogs: res.data, addNew: true, btnExist: false });
                 })
@@ -33,10 +33,10 @@ class Profile extends Component {
                 })
         }
         else {
-            axios.get(`http://localhost:4000/users/${this.props.match.params.id}`)
+            axios.get(process.env.REACT_APP_BACKEND_URL + `/users/${this.props.match.params.id}`)
                 .then(res => {
                     this.setState({ user: res.data })
-                    axios.get(`http://localhost:4000/blogs/user/${this.props.match.params.id}`)
+                    axios.get(process.env.REACT_APP_BACKEND_URL + `/blogs/user/${this.props.match.params.id}`)
                         .then(res => {
                             this.setState({ blogs: res.data, addNew: false, btnExist: true });
                             const followingg = this.props.currentUser.following?.includes(this.props.match.params.id);
@@ -66,9 +66,9 @@ class Profile extends Component {
         const following = this.props.currentUser.following.includes(this.props.match.params.id);
         switch (following) {
             case true:
-                axios.post(`http://localhost:4000/users/unfollow/${this.props.match.params.id}`, "", { headers: { 'auth-token': token } })
+                axios.post(process.env.REACT_APP_BACKEND_URL + `/users/unfollow/${this.props.match.params.id}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        axios.get(`http://localhost:4000/users/${this.props.currentUser._id}`)
+                        axios.get(process.env.REACT_APP_BACKEND_URL + `/users/${this.props.currentUser._id}`)
                             .then(res => {
                                 setUserToLocalStorage(res.data)
                                 this.setState({ currentUser: res.data, isToggleOn: "Follow" });
@@ -83,9 +83,9 @@ class Profile extends Component {
                 break;
 
             case false:
-                axios.post(`http://localhost:4000/users/follow/${this.props.match.params.id}`, "", { headers: { 'auth-token': token } })
+                axios.post(process.env.REACT_APP_BACKEND_URL + `/users/follow/${this.props.match.params.id}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        axios.get(`http://localhost:4000/users/${this.props.currentUser._id}`)
+                        axios.get(process.env.REACT_APP_BACKEND_URL + `/users/${this.props.currentUser._id}`)
                             .then(res => {
                                 setUserToLocalStorage(res.data);
                                 this.setState({ currentUser: res.data, isToggleOn: "Unfollow" });

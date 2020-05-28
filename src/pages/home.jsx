@@ -29,12 +29,12 @@ class Home extends Component {
     }
 
     async getBlogs() {
-        const res = await axios.get('http://localhost:4000/blogs');
+        const res = await axios.get(process.env.REACT_APP_BACKEND_URL + '/blogs');
         return res.data;
         // this.setState({ blogs: res.data });
     }
     async getUsers() {
-        const res = await axios.get("http://localhost:4000/users");
+        const res = await axios.get(process.env.REACT_APP_BACKEND_URL + "/users");
         return res.data
         // this.setState({ users: res.data });
     }

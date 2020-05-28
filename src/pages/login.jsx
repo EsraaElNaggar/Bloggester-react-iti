@@ -62,7 +62,7 @@ class Login extends Component {
     };
 
     login = ({ userEmail, userPassword }) => {
-        axios.post("http://localhost:4000/api/user/login", { userEmail, userPassword })
+        axios.post(process.env.REACT_APP_BACKEND_URL + "/api/user/login", { userEmail, userPassword })
             .then(res => {
                 setTokenToLocalStorage(res.data.token);
                 setUserToLocalStorage(res.data.user);

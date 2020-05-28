@@ -23,7 +23,7 @@ class UserExplorer extends Component {
     }
 
     async getUsers() {
-        const res = await axios.get('http://localhost:4000/users');
+        const res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/users');
         this.setState({ users: res.data });
     }
 

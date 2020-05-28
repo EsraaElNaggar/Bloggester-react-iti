@@ -24,7 +24,7 @@ class BlogForm extends Component {
         // console.log(!this.props.match.params.id, this.props.match.params.id);
 
         if (this.props.match.params.id) {
-            axios.get(`http://localhost:4000/blogs/${this.props.match.params.id}`)
+            axios.get(process.env.REACT_APP_BACKEND_URL + `/blogs/${this.props.match.params.id}`)
                 .then(res => {
                     this.setState({ blog: res.data })
                 })
@@ -75,7 +75,7 @@ class BlogForm extends Component {
             }
         };
 
-        axios.post("http://localhost:4000/blogs", formData, config)
+        axios.post(process.env.REACT_APP_BACKEND_URL + "/blogs", formData, config)
             .then(res => {
                 this.props.history.replace(`/blog/${res.data._id}`);
             })
@@ -90,7 +90,7 @@ class BlogForm extends Component {
                 'auth-token': this.props.token
             }
         };
-        axios.put(`http://localhost:4000/blogs/${this.props.match.params.id}`, formData, config)
+        axios.put(process.env.REACT_APP_BACKEND_URL + `/blogs/${this.props.match.params.id}`, formData, config)
             .then(res => {
                 this.props.history.replace(`/blog/${res.data._id}`);
             })

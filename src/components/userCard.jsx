@@ -23,7 +23,7 @@ class UserCard extends Component {
         const follow = currentUser.following?.includes(this.props.userId);
         this.setState({ isToggleOn: follow });
 
-        axios.get(`http://localhost:4000/blogs/user/${this.props.userId}`)
+        axios.get(process.env.REACT_APP_BACKEND_URL + `/blogs/user/${this.props.userId}`)
             .then(res => {
                 this.setState({ blogs: res.data })
             })
@@ -35,9 +35,9 @@ class UserCard extends Component {
         const follow = this.state.currentUser.following.includes(this.props.userId);
         switch (follow) {
             case true:
-                axios.post(`http://localhost:4000/users/unfollow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
+                axios.post(process.env.REACT_APP_BACKEND_URL + `/users/unfollow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        // axios.get(`http://localhost:4000/users/${this.state.currentUser._id}`)
+                        // axios.get(process.env.REACT_APP_BACKEND_URL+`/users/${this.state.currentUser._id}`)
                         //     .then(res => {
                         this.setState({ currentUser: res.data });
                         setUserToLocalStorage(res.data)
@@ -55,9 +55,9 @@ class UserCard extends Component {
                 break;
 
             case false:
-                axios.post(`http://localhost:4000/users/follow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
+                axios.post(process.env.REACT_APP_BACKEND_URL + `/users/follow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        // axios.get(`http://localhost:4000/users/${this.props.currentUser._id}`)
+                        // axios.get(process.env.REACT_APP_BACKEND_URL+`/users/${this.props.currentUser._id}`)
                         //     .then(res => {
                         this.setState({ currentUser: res.data });
                         setUserToLocalStorage(res.data);

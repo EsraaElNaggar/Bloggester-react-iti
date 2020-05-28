@@ -34,7 +34,7 @@ class App extends Component {
 
   async getCurrentUser() {
     const me = getUserIdFromLocalStorage();
-    const res = await axios.get(`http://localhost:4000/users/${me}`);
+    const res = await axios.get(process.env.REACT_APP_BACKEND_URL + `/users/${me}`);
     this.setState({ currentUser: res.data });
   }
 

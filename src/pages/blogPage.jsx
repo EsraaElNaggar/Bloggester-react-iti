@@ -20,14 +20,14 @@ class BlogPage extends Component {
         this.getBlog();
     }
     getBlog = async () => {
-        await axios.get(`http://localhost:4000/blogs/${this.props.match.params.id}`)
+        await axios.get(process.env.REACT_APP_BACKEND_URL + `/blogs/${this.props.match.params.id}`)
             .then(res => {
                 this.getUsers(res.data.userId);
                 this.setState({ blog: res.data });
             });
     }
     getUsers = async (id) => {
-        await axios.get(`http://localhost:4000/users/${id}`)
+        await axios.get(process.env.REACT_APP_BACKEND_URL + `/users/${id}`)
             .then(res => {
                 this.setState({ users: res.data });
             })
@@ -36,7 +36,7 @@ class BlogPage extends Component {
         const token = getTokenFromLocalStorage();
         console.log(token);
 
-        axios.delete(`http://localhost:4000/blogs/${this.props.match.params.id}`, { headers: { 'auth-token': token } })
+        axios.delete(process.env.REACT_APP_BACKEND_URL + `/blogs/${this.props.match.params.id}`, { headers: { 'auth-token': token } })
             .then(res => {
                 this.props.history.replace("/myProfile");
             })

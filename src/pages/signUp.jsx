@@ -100,7 +100,7 @@ class SignUp extends Component {
                 'content-type': 'multipart/form-data',
             }
         };
-        axios.post("http://localhost:4000/api/user/register", formData, config)
+        axios.post(process.env.REACT_APP_BACKEND_URL + "/api/user/register", formData, config)
             .then(res => {
                 this.props.history.replace("/login");
             })
