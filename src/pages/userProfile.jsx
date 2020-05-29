@@ -4,7 +4,6 @@ import NavBar from '../components/navbar';
 import Profile from '../components/profile';
 
 class UserProfile extends Component {
-    // state = {  }
     render() {
 
         return (

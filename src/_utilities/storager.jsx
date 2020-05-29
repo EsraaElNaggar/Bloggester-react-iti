@@ -31,13 +31,6 @@ export function getUserIdFromLocalStorage() {
     return JSON.parse(localStorage.getItem(currentUserId));
 }
 
-// get userId from localStorage
-// export function getUserFollowingFromLocalStorage() {
-//     return JSON.parse(localStorage.getItem("currentUserFollowing"));
-// }
-
-
-
 // !Clear Storage 
 
 // remove user from localStorage

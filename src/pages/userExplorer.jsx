@@ -29,10 +29,8 @@ class UserExplorer extends Component {
     render() {
         let users = this.state.users;
 
-        //Start Index
         const startIndex = (this.state.activePage - 1) * this.state.pageSize;
 
-        //Showed Products
         const showedUsers = _(this.state.users)
             .slice(startIndex)
             .take(this.state.pageSize)

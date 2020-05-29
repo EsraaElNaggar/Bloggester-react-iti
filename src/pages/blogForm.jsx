@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
-// import _ from "lodash";
 import axios from "axios";
 
 import NavBar from "../components/navbar";
@@ -88,16 +87,13 @@ class BlogForm extends Component {
     }
 
     handleChange = ({ target }) => {
-        //Clone
         const blog = { ...this.state.blog };
-        //Edit
         if (target.files) {
             blog[target.id] = target.files[0];
         }
         else {
             blog[target.id] = target.value;
         }
-        //Set Satate
         this.setState({ blog });
     }
 

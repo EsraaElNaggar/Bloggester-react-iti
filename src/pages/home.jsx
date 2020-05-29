@@ -34,19 +34,15 @@ class Home extends Component {
     getBlogs = async () => {
         const res = await axios.get(process.env.REACT_APP_BACKEND_URL + '/blogs');
         return res.data;
-        // this.setState({ blogs: res.data });
     }
     getUsers = async () => {
         const res = await axios.get(process.env.REACT_APP_BACKEND_URL + "/users");
         return res.data
-        // this.setState({ users: res.data });
     }
 
     render() {
         let { blogs, users } = this.state;
-        //Start Index
         const startIndex = (this.state.activePage - 1) * this.state.pageSize;
-        //Showed Products
         const showedBlogs = _(blogs).reverse()
             .slice(startIndex)
             .take(this.state.pageSize)

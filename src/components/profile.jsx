@@ -120,8 +120,6 @@ class Profile extends Component {
                             <p className="title">{user.userTitle}</p>
                             {this.state.btnExist &&
                                 <button type="button" onClick={this.handleClick} className="Userbtn2">{this.state.isToggleOn}</button>
-                                // : <button type="button" onClick={this.handleClick} className="Userbtn">Follow</button>
-                                // <button type="button" className="Userbtn">Follow</button>
                             }
                         </div>
                         <div className="social-icons">

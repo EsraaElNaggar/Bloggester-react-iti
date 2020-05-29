@@ -50,26 +50,21 @@ class SignUp extends Component {
         formData.append('userEmail', this.state.account.userEmail);
         formData.append('userPassword', this.state.account.userPassword);
 
-        //Validation :
         const errors = this.validate();
         if (errors) {
             this.setState({ errors });
             return;
         }
-        //valid
         this.setState({ errors: {} });
-        //Call backend
         this.register(formData);
     };
     validate = () => {
         const result = Joi.validate(this.state.account, this.schema, {
             abortEarly: false
         });
-        //No Errors
         if (result.error === null) {
             return null;
         }
-        //Errors
         const errors = {};
         for (const error of result.error.details) {
             errors[error.path] = error.message;
@@ -77,16 +72,13 @@ class SignUp extends Component {
         return errors;
     };
     handleChange = ({ target }) => {
-        //Clone
         const account = { ...this.state.account };
-        //Edit
         if (target.files) {
             account[target.id] = target.files[0];
         }
         else {
             account[target.id] = target.value;
         }
-        //Set Satate
         this.setState({ account });
     };
 

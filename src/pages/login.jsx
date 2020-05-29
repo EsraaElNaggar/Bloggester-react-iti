@@ -25,15 +25,12 @@ class Login extends Component {
     };
     handleSubmit = e => {
         e.preventDefault();
-        //Validation :
         const errors = this.validate();
         if (errors) {
             this.setState({ errors });
             return;
         }
-        //valid
         this.setState({ errors: {} });
-        //Call backend
         this.login(this.state.account);
     };
 
@@ -41,11 +38,9 @@ class Login extends Component {
         const result = Joi.validate(this.state.account, this.schema, {
             abortEarly: false
         });
-        //No Errors
         if (result.error === null) {
             return null;
         }
-        //Errors
         const errors = {};
         for (const error of result.error.details) {
             errors[error.path] = error.message;
@@ -53,11 +48,8 @@ class Login extends Component {
         return errors;
     };
     handleChange = ({ target }) => {
-        //Clone
         const account = { ...this.state.account };
-        //Edit
         account[target.id] = target.value;
-        //Set Satate
         this.setState({ account });
     };
 
