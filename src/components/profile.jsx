@@ -140,21 +140,24 @@ class Profile extends Component {
                         </div>
                     </div>
                     <div className="ProfileContent">
-                        <div className="postsGroup">
-                            {blogs.map(blog => (
-                                <ProfilePost
-                                    key={blog._id}
-                                    userId={blog.userId}
-                                    firstName={user.firstName}
-                                    lastName={user.lastName}
-                                    blogId={blog._id}
-                                    blogImg={blog.blogImg}
-                                    blogTitle={blog.blogTitle}
-                                    blogBody={blog.blogBody}
-                                />
-                            ))}
-                        </div>
-
+                        {_.isEmpty(blogs) ?
+                            <p className="placeholderText" >We are on <span>Bloggester !</span><br /> Nothing posted in here yet<span>...</span></p>
+                            :
+                            <div className="postsGroup">
+                                {blogs.map(blog => (
+                                    <ProfilePost
+                                        key={blog._id}
+                                        userId={blog.userId}
+                                        firstName={user.firstName}
+                                        lastName={user.lastName}
+                                        blogId={blog._id}
+                                        blogImg={blog.blogImg}
+                                        blogTitle={blog.blogTitle}
+                                        blogBody={blog.blogBody}
+                                    />
+                                ))}
+                            </div>
+                        }
                     </div>
                     {this.state.addNew &&
                         <div className="WBBtnDiv">

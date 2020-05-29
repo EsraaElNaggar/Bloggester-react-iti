@@ -55,40 +55,44 @@ class Home extends Component {
             <React.Fragment>
                 <NavBar />
                 <div >
-                    <h2 className="myTitle container">Recent Blogs...</h2>
-                    {/* el mafroud hena law el user logged in tezhar */}
-                    {/* {this.props.currentUser._id && */}
+                    {(blogs.length && users.length) &&
+                        < h2 className="myTitle container">Recent Blogs...</h2>
+                    }
                     <div className="WBBtnDiv2">
                         <a href="/blogForm" className="WBBtn">Write a Blog</a>
                     </div>
-                    {/* } */}
                 </div>
-                {(blogs.length && users.length) ?
-                    showedBlogs.map(
-                        blog => (
-                            <HomePost
-                                key={blog._id}
-                                userId={blog.userId}
-                                blogId={blog._id}
-                                blogImg={blog.blogImg}
-                                blogTitle={blog.blogTitle}
-                                blogBody={blog.blogBody}
-                                currentDate={blog.currentDate}
-                                users={this.state.users}
-                                currentUser={this.state.currentUser}
-                            />
-                        ))
-                    : <div>Loading ...</div>}
+                {
+                    (blogs.length && users.length) ?
+                        showedBlogs.map(
+                            blog => (
+                                <HomePost
+                                    key={blog._id}
+                                    userId={blog.userId}
+                                    blogId={blog._id}
+                                    blogImg={blog.blogImg}
+                                    blogTitle={blog.blogTitle}
+                                    blogBody={blog.blogBody}
+                                    currentDate={blog.currentDate}
+                                    users={this.state.users}
+                                    currentUser={this.state.currentUser}
+                                />
+                            ))
+                        :
+                        <p className="placeholderText" >We are on <span>Bloggester !</span><br /> Nothing posted yet<span>...</span></p>
+                }
 
-                {blogs.length > this.state.pageSize && (
-                    <Pagination
-                        activePage={this.state.activePage}
-                        pageCount={blogs.length / this.state.pageSize}
-                        onPageChange={this.handlePageChange}
-                    />
-                )}
+                {
+                    blogs.length > this.state.pageSize && (
+                        <Pagination
+                            activePage={this.state.activePage}
+                            pageCount={blogs.length / this.state.pageSize}
+                            onPageChange={this.handlePageChange}
+                        />
+                    )
+                }
 
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }

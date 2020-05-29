@@ -41,26 +41,30 @@ class UserExplorer extends Component {
         return (
             <React.Fragment>
                 <NavBar />
-                <h2 className=" container myTitle" >Explore Users...</h2>
-                {/* {showedUsers._id !== this.props.currentUser._id && */}
-                <div className="profiles container">
-                    {showedUsers.map(
-                        user => (
-                            <UserCard
-                                key={user._id}
-                                userId={user._id}
-                                firstName={user.firstName}
-                                lastName={user.lastName}
-                                userImg={user.userImg}
-                                userTitle={user.userTitle}
-                                following={user.following}
-                                followers={user.followers}
-                                token={this.props.token}
-                            />
-                        )
-                    )}
-                </div>
-                {/* } */}
+                {(users.length == 1) ?
+                    <p className="placeholderText" >We are on <span>Bloggester !</span><br /> There is no users yet<span>...</span></p>
+                    :
+                    <React.Fragment>
+                        < h2 className=" container myTitle" >Explore Users...</h2>
+                        <div className="profiles container">
+                            {showedUsers.map(
+                                user => (
+                                    <UserCard
+                                        key={user._id}
+                                        userId={user._id}
+                                        firstName={user.firstName}
+                                        lastName={user.lastName}
+                                        userImg={user.userImg}
+                                        userTitle={user.userTitle}
+                                        following={user.following}
+                                        followers={user.followers}
+                                        token={this.props.token}
+                                    />
+                                )
+                            )}
+                        </div>
+                    </React.Fragment>
+                }
                 {users.length > this.state.pageSize && (
                     <Pagination
                         activePage={this.state.activePage}
@@ -68,7 +72,7 @@ class UserExplorer extends Component {
                         onPageChange={this.state.onPageChange}
                     />
                 )}
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 }

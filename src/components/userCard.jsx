@@ -37,8 +37,6 @@ class UserCard extends Component {
             case true:
                 axios.post(process.env.REACT_APP_BACKEND_URL + `/users/unfollow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        // axios.get(process.env.REACT_APP_BACKEND_URL+`/users/${this.state.currentUser._id}`)
-                        //     .then(res => {
                         this.setState({ currentUser: res.data });
                         setUserToLocalStorage(res.data)
                         this.setState(e => ({
@@ -48,17 +46,11 @@ class UserCard extends Component {
                     .catch(err => {
                         this.props.history.replace("/error");
                     })
-                // })
-                //             .catch (err => {
-                //     this.props.history.replace("/error");
-                // })
                 break;
 
             case false:
                 axios.post(process.env.REACT_APP_BACKEND_URL + `/users/follow/${this.props.userId}`, "", { headers: { 'auth-token': token } })
                     .then(res => {
-                        // axios.get(process.env.REACT_APP_BACKEND_URL+`/users/${this.props.currentUser._id}`)
-                        //     .then(res => {
                         this.setState({ currentUser: res.data });
                         setUserToLocalStorage(res.data);
                         this.setState(e => ({
@@ -68,11 +60,6 @@ class UserCard extends Component {
                     .catch(err => {
                         this.props.history.replace("/error");
                     })
-            // })
-            //     .catch(err => {
-            //         this.props.history.replace("/error");
-            //     })
-            // break;
             default:
                 break;
         }

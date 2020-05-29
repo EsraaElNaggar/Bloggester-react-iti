@@ -1229,3 +1229,14 @@ button{
     background-size: cover;
     background-position: center;
 }
+
+.placeholderText{
+    font-size: xx-large;
+    color: white;
+    text-align: center;
+    margin-top: 7rem;
+}
+.placeholderText span{
+    color:gold;
+    font-family: 'Pacifico', cursive; 
+}
