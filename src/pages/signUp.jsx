@@ -50,7 +50,6 @@ class SignUp extends Component {
         formData.append('userEmail', this.state.account.userEmail);
         formData.append('userPassword', this.state.account.userPassword);
 
-        console.log(formData);
         //Validation :
         const errors = this.validate();
         if (errors) {
@@ -82,12 +81,9 @@ class SignUp extends Component {
         const account = { ...this.state.account };
         //Edit
         if (target.files) {
-            console.log(target.files[0]);
-            console.log(target.id);
             account[target.id] = target.files[0];
         }
         else {
-            console.log(target);
             account[target.id] = target.value;
         }
         //Set Satate

@@ -3,7 +3,6 @@ import _ from "lodash";
 
 const Pagination = props => {
     const pages = _.range(1, props.pageCount + 1);
-    console.log(props.onPageChange);
 
     return (
         <nav className="pagination-outer" aria-label="Page Navigation">

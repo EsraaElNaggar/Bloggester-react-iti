@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
-import axios from 'axios';
 
 import LandingPage from "./pages/landingPage";
 import Login from "./pages/login";
@@ -13,30 +12,8 @@ import UserProfile from "./pages/userProfile";
 import ContactUs from "./pages/contactUs";
 import Error from "./pages/error";
 import BlogPage from './pages/blogPage';
-import { getTokenFromLocalStorage, getUserIdFromLocalStorage } from './_utilities/storager';
-
-
 
 class App extends Component {
-  state = {
-    currentUser: {},
-    token: ""
-  };
-
-  componentDidMount() {
-    this.getCurrentUser();
-    this.getToken()
-  }
-  getToken() {
-    const token = getTokenFromLocalStorage();
-    this.setState({ token: token })
-  }
-
-  async getCurrentUser() {
-    const me = getUserIdFromLocalStorage();
-    const res = await axios.get(process.env.REACT_APP_BACKEND_URL + `/users/${me}`);
-    this.setState({ currentUser: res.data });
-  }
 
   render() {
     return (
@@ -62,8 +39,6 @@ class App extends Component {
               render={props => (
                 < UserExplorer
                   {...props}
-                  currentUser={this.state.currentUser}
-                  token={this.state.token}
                 />
               )}
             />
@@ -71,8 +46,6 @@ class App extends Component {
               render={props => (
                 <UserProfile
                   {...props}
-                  currentUser={this.state.currentUser}
-                  token={this.state.token}
                 />
               )}
             />
@@ -80,8 +53,6 @@ class App extends Component {
               render={props => (
                 <MyProfile
                   {...props}
-                  currentUser={this.state.currentUser}
-                  token={this.state.token}
                 />
               )}
             />
@@ -89,7 +60,6 @@ class App extends Component {
               render={props => (
                 <BlogForm
                   {...props}
-                  token={this.state.token}
                 />
               )}
             />
@@ -97,7 +67,6 @@ class App extends Component {
               render={props => (
                 <BlogForm
                   {...props}
-                  token={this.state.token}
                 />
               )}
             />
@@ -105,8 +74,6 @@ class App extends Component {
               render={props => (
                 <BlogPage
                   {...props}
-                  currentUser={this.state.currentUser}
-                  token={this.state.token}
                 />
               )}
             />
@@ -116,7 +83,6 @@ class App extends Component {
               render={props => (
                 <Home
                   {...props}
-                  currentUser={this.state.currentUser}
                 />
               )}
             />

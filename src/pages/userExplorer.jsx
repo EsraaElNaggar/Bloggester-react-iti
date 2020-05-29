@@ -5,7 +5,6 @@ import _ from "lodash";
 import NavBar from '../components/navbar';
 import UserCard from '../components/userCard';
 import Pagination from '../components/pagination';
-// import { getUserFromLocalStorage } from '../_utilities/storager';
 
 class UserExplorer extends Component {
     state = {
@@ -18,12 +17,12 @@ class UserExplorer extends Component {
     };
 
     componentDidMount() {
-        this.getUsers();
 
+        this.getUsers();
     }
 
-    async getUsers() {
-        const res = await axios.get(process.env.REACT_APP_BACKEND_URL+'/users');
+    getUsers = async () => {
+        const res = await axios.get(process.env.REACT_APP_BACKEND_URL + '/users');
         this.setState({ users: res.data });
     }
 
@@ -56,7 +55,6 @@ class UserExplorer extends Component {
                                 userTitle={user.userTitle}
                                 following={user.following}
                                 followers={user.followers}
-                                currentUser={this.props.currentUser}
                                 token={this.props.token}
                             />
                         )

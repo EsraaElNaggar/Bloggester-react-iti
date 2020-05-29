@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class ProfilePost extends Component {
-    // state = {  }
+
     render() {
         const p = this.props;
         return (

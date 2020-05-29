@@ -35,7 +35,7 @@ button{
     height: fit-content;
 }
 .dropme{
-        background: none;
+    background: none;
     border: none;
     color: white;
 }
@@ -65,9 +65,16 @@ button{
     color: white;
 }
 .itemNavCont:hover{
-        color: #16181b;
+    color: #16181b;
     text-decoration: none;
     background-color: gold;
+}
+.imgNav{
+    border-radius: 50%;
+    height: 3.5vw;
+    width: 3.5vw;
+    background-size: cover;
+    background-position: center;
 }
 
 /* search */
@@ -1022,12 +1029,14 @@ button{
     cursor: text;
     top: 20px;
 }
-.form__label {
-    position: absolute;
+.form__label, .form__label2{
     top: 0;
     display: block;
     transition: 0.2s;
     color: #9b9b9b;
+}
+.form__label {
+    position: absolute !important;
 }
 .form__field:focus {
     padding-bottom: 6px;
@@ -1036,7 +1045,7 @@ button{
     border-color: gold;
     border-image-slice: 1;
 }
-.form__field:focus~.form__label {
+.form__field:focus~.form__label  {
     position: absolute;
     top: 0;
     display: block;
@@ -1058,20 +1067,25 @@ button{
 .taged-textbox__data {
     display: flex;
     align-items: flex-start;
+    padding: 1rem 3rem;
 }
 .taged-textbox__tags {
     display: flex;
     flex-wrap: wrap;
-    padding: 5% 0 0 0;
+}
+.selectedClass{
+    display: flex;
+    flex-wrap: wrap;
 }
 .taged-textbox__tag {
     color: #0c1821;
     background-color: #e4e3e3;
     padding: .5rem;
     border-radius: 10rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
     display: flex;
     align-items: center;
+    width: max-content;
     justify-content: space-between;
 }
 .taged-textbox__tag:not(:last-of-type) {
@@ -1085,7 +1099,7 @@ button{
     height: 1.5rem;
     font-size: 1rem;
     border-radius: 50%;
-    background-color: #444;
+    background-color: #cacaca;
     color: #e4e3e3;
     display: flex;
     justify-content: center;
@@ -1177,7 +1191,7 @@ button{
 }
 .blogBodyy{
     text-align: justify;
-    padding: 2% 3%;
+    padding: 1% 3%;
 }
 .blogBody{
    color: white !important;
@@ -1203,7 +1217,7 @@ button{
 .blogOper .fa-edit:hover{
     color:gold;
 }
-.blogOper .fa-trash:hover{
+.blogOper .fa-trash-alt:hover{
     color:red;
 }
 

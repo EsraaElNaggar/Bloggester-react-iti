@@ -5,6 +5,7 @@ import _ from "lodash";
 import NavBar from '../components/navbar';
 import HomePost from '../components/homePost';
 import Pagination from '../components/pagination';
+import { getUserFromLocalStorage } from '../_utilities/storager';
 
 class Home extends Component {
     state = {
@@ -19,6 +20,8 @@ class Home extends Component {
     };
 
     componentDidMount() {
+        this.setState({ currentUser: getUserFromLocalStorage() });
+
         Promise.all([this.getUsers(), this.getBlogs()])
             .then(([users, blogs]) => {
 
@@ -28,12 +31,12 @@ class Home extends Component {
             })
     }
 
-    async getBlogs() {
+    getBlogs = async () => {
         const res = await axios.get(process.env.REACT_APP_BACKEND_URL + '/blogs');
         return res.data;
         // this.setState({ blogs: res.data });
     }
-    async getUsers() {
+    getUsers = async () => {
         const res = await axios.get(process.env.REACT_APP_BACKEND_URL + "/users");
         return res.data
         // this.setState({ users: res.data });
@@ -71,10 +74,8 @@ class Home extends Component {
                                 blogTitle={blog.blogTitle}
                                 blogBody={blog.blogBody}
                                 currentDate={blog.currentDate}
-                                // publishDay={blog.publishDay}
-                                // publishMonth={blog.publishMonth}
                                 users={this.state.users}
-                                currentUser={this.props.currentUser}
+                                currentUser={this.state.currentUser}
                             />
                         ))
                     : <div>Loading ...</div>}

@@ -80,10 +80,11 @@ class UserCard extends Component {
 
     render() {
         let u = this.props;
+        let s = this.state;
 
         return (
             <React.Fragment>
-                {u.userId !== u.currentUser._id &&
+                {u.userId !== s.currentUser._id &&
                     <div className="wrapperEP">
                         <div className="profile">
                             <img alt="" src={u.userImg} className="thumbnail" />

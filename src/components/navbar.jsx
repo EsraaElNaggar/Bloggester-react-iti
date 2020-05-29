@@ -54,7 +54,7 @@ class NavBar extends Component {
                                     </li>
                                 </ul>
                                 <div className="dropImgList" >
-                                    <div id="cover">
+                                    {/* <div id="cover">
                                         <form method="get" action="">
                                             <div className="tb">
                                                 <div className="td">
@@ -68,12 +68,8 @@ class NavBar extends Component {
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
-                                    {/* <div className="searchBox">
-                                        <div><input type="text" className="searchInput" /></div>
-                                        <div><i className="fas fa-search"></i></div>
                                     </div> */}
-                                    <img src={`${currentUser?.userImg}`} className="rounded-circle " style={{ width: '3rem' }} alt="" />
+                                    <div className="imgNav" style={{ backgroundImage: `url(${currentUser?.userImg})` }}></div>
                                     <button onClick={this.toggle} type="button" className="dropdown-toggle dropme"></button>
                                     <div className={(this.state.isActive) ? "dropNav activedrop " : "dropNav "} style={{ textAlignLast: "left" }} >
                                         <Link className="itemNavCont dropdown-item" to="/myProfile">My Profile</Link>
@@ -83,9 +79,6 @@ class NavBar extends Component {
                                 </div>
                             </div>
                         </nav>
-
-
-
                     </div>
                 </div>
             </React.Fragment>

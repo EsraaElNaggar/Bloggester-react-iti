@@ -31,6 +31,7 @@ class ContactUs extends Component {
         //valid
         this.setState({ errors: {} });
         //Call backend
+        this.props.history.replace("/home");
 
     };
     validate = () => {
