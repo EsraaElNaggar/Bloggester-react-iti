@@ -246,12 +246,12 @@ button{
     display: flex;
     background-color: khaki;
     height: 30px;
-    width: 50%;
+    width: 70%;
     border-radius: 20px;
 }
 .bcAPic {
     margin: 1%;
-    width: 18%;
+    /* width: 18%; */
     height: 90%;
     border-radius: 50%;
 }
@@ -260,8 +260,8 @@ button{
     color: #0c1821;
     padding: 3%;
     margin-right: 2%;
+    width: 100%;
     font-size: 0.8rem;
-    width: max-content;
 }
 .separator {
     margin-top: 10px;
