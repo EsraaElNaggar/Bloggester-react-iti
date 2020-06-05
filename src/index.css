@@ -1201,6 +1201,10 @@ button{
     /* word-break: break-all; */
     white-space: pre-wrap;
 }
+.blogBody::selection{
+    color:#0c1821;
+    background-color: gold;
+}
 .blogOper{
     display: flex;
     justify-content: space-around;
